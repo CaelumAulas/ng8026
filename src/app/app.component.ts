@@ -6,5 +6,31 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ng8026';
+
+  _isNewEmailFormOpen = false;
+  listaDeEmails = [];
+  email = {
+    destinatario: '',
+    assunto: '',
+    conteudo: ''
+  }
+
+  get isNewEmailFormOpen() {
+    return this._isNewEmailFormOpen
+  }
+
+  toggleNewEmailForm(){
+    this._isNewEmailFormOpen = !this._isNewEmailFormOpen;
+  }
+
+  handleNewEmail(evento: Event){
+    evento.preventDefault();
+
+    this.listaDeEmails.push(this.email);
+    this.email = {
+      destinatario: '',
+      assunto: '',
+      conteudo: ''
+    }
+  }
 }
