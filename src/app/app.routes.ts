@@ -1,14 +1,9 @@
-import { Routes, RouterModule } from "@angular/router";
-import { LoginComponent } from './modules/login/login.component';
-import { CaixaDeEntradaComponent } from './modules/caixa-de-entrada/caixa-de-entrada.component';
-import { CadastroComponent } from './modules/cadastro/cadastro.component';
+import { Routes } from "@angular/router";
 
-const rotas:Routes = [
-  {path: '', component: LoginComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'inbox', component: CaixaDeEntradaComponent},
-  {path: 'cadastro', component: CadastroComponent },
-  {path: '**', redirectTo: 'login'}
+export const rotas:Routes = [
+  {path: '', loadChildren: 'src/app/modules/login/login.module#LoginModule' },
+  {path: 'login', loadChildren: 'src/app/modules/login/login.module#LoginModule' },
+  {path: 'inbox', loadChildren: 'src/app/modules/caixa-de-entrada/caixa-de-entrada.module#CaixaDeEntradaModule' },
+  {path: 'cadastro', loadChildren: 'src/app/modules/cadastro/cadastro.module#CadastroModule' },
+  {path: '**', redirectTo: ''}
 ]
-
-export const ModuloRoteamento = RouterModule.forRoot(rotas);

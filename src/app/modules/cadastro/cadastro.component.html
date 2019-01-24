@@ -4,9 +4,7 @@
     <div class="page-content">
       <div class="mdl-grid">
 
-        <p *ngIf="mensagem">
-          {{mensagem}}
-        </p>
+        <p *ngIf="mensagem">{{mensagem}}</p>
 
         <form [formGroup]="formCadastro" (ngSubmit)="handleCadastrarUsuario()">
 
