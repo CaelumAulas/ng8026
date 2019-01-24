@@ -1,0 +1,9 @@
+.mdl-textfield__error.success {
+  visibility: visible;
+  color: green;
+}
+
+.mdl-textfield__error.pending {
+  visibility: visible;
+  color: rebeccapurple;
+}

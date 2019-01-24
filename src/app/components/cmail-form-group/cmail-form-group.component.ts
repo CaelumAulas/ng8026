@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, Input } from '@angular/core';
 
 @Component({
   selector: 'cmail-form-group',
@@ -9,6 +9,7 @@ export class CmailFormGroupComponent implements OnInit {
 
   campoId = '';
   label = '';
+  @Input() control;
 
   constructor(private componente: ElementRef) { }
 
