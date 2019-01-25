@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { EmailService } from './services/email.service';
+import { Email } from './models/email';
 
 @Component({
   selector: 'cmail-caixa-de-entrada',
@@ -8,17 +10,24 @@ import { NgForm } from '@angular/forms';
 })
 export class CaixaDeEntradaComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
   _isNewEmailFormOpen = false;
-  listaDeEmails = [];
+  listaDeEmails: Email[] = [];
   email = {
     destinatario: '',
     assunto: '',
     conteudo: ''
+  }
+
+  constructor(private emailService: EmailService) { }
+
+  ngOnInit() {
+    this.emailService
+        .listar()
+        .subscribe(
+          listaDeEmailsApi => {
+            this.listaDeEmails = listaDeEmailsApi
+          }
+        )
   }
 
   get isNewEmailFormOpen() {
@@ -33,15 +42,27 @@ export class CaixaDeEntradaComponent implements OnInit {
 
     if (formEmail.invalid) return;
 
-    this.listaDeEmails.push(this.email);
+    this.emailService
+        .enviar(this.email)
+        .subscribe(
+          emailApi => {
 
-    this.email = {
-      destinatario: '',
-      assunto: '',
-      conteudo: ''
-    }
+            this.listaDeEmails.push(emailApi);
 
-    formEmail.resetForm()
+            this.email = {
+              destinatario: '',
+              assunto: '',
+              conteudo: ''
+            }
+
+            formEmail.resetForm();
+            this.toggleNewEmailForm();
+
+          }
+          ,error => {
+            console.log(error);
+          }
+        )
 
   }
 

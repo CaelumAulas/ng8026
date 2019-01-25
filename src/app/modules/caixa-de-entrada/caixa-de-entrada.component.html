@@ -5,10 +5,15 @@
 
       <div class="mdl-grid">
         <ul>
-          <li *ngFor="let email of listaDeEmails">
-            <strong>{{email.destinatario}}</strong> <br>
-            <strong>{{email.assunto}}</strong>
-          </li>
+          <cmail-list-item
+            *ngFor="let email of listaDeEmails"
+
+            [email]="email.destinatario"
+            [assunto]="email.assunto"
+            [conteudo]="email.introducao"
+            [data]="email.dataDeEnvio"
+          >
+          </cmail-list-item>
         </ul>
       </div>
 
