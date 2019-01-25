@@ -17,4 +17,9 @@ export class CmailListItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  handleRemoveItem(){
+    console.log(this);
+    console.log('apagou');
+  }
+
 }

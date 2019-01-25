@@ -29,18 +29,12 @@ export class EmailService {
                 .post(this.url, emailDto, this.cabecalho)
                 .pipe(
                   map(
-                    (response: any) => {
-                      console.log(response);
-
-                      return new Email(
-                        {
+                    (response: any) => new Email({
                           destinatario: response.to,
                           assunto: response.subject,
                           conteudo: response.content,
                           dataDeEnvio: response.created_at
-                        }
-                      )
-                    }
+                        })
                   )
                 )
 
@@ -54,15 +48,12 @@ export class EmailService {
                     (listaEmailsApi: any[]) => {
                         return listaEmailsApi
                                   .map(
-                                    (emailApi) => {
-
-                                      console.log(emailApi);
-                                      return new Email({
+                                    (emailApi) => new Email({
                                         destinatario: emailApi.to,
                                         assunto: emailApi.subject,
                                         conteudo: emailApi.content,
                                         dataDeEnvio: emailApi.created_at
-                                      })}
+                                      })
                                   )}
                   )
                 )
