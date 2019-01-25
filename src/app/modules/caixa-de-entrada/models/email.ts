@@ -4,15 +4,17 @@ export class Email {
   private _assunto = '';
   private _conteudo = '';
   private _dataDeEnvio = '';
+  private _id = '';
 
   constructor(
-    {destinatario, assunto, conteudo, dataDeEnvio}:
-    {destinatario: string, assunto: string, conteudo: string , dataDeEnvio: string}
+    {destinatario, assunto, conteudo, dataDeEnvio, id}:
+    {destinatario: string, assunto: string, conteudo: string , dataDeEnvio: string, id: string}
   )
   {
     this._destinatario = destinatario;
     this._conteudo = conteudo;
     this._dataDeEnvio = dataDeEnvio;
+    this._id = id;
 
     this.setAssunto(assunto);
   }
@@ -31,6 +33,10 @@ export class Email {
 
   get dataDeEnvio(): string {
     return this._dataDeEnvio;
+  }
+
+  get id():string {
+    return this._id;
   }
 
   get introducao(): string{

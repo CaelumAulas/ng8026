@@ -12,6 +12,7 @@
             [assunto]="email.assunto"
             [conteudo]="email.introducao"
             [data]="email.dataDeEnvio"
+            (remover)="handleRemoveEmail(email.id)"
           >
           </cmail-list-item>
         </ul>

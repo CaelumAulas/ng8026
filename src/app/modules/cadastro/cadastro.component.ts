@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { map, catchError } from "rxjs/operators";
 import { UserOutputDto } from './user.output.dto';
 import { Router } from '@angular/router';
+import { PageDataService } from 'src/app/services/page-data.service';
 
 @Component({
   selector: 'cmail-cadastro',
@@ -23,9 +24,12 @@ export class CadastroComponent implements OnInit {
   mensagem = '';
 
   constructor(private httpClient: HttpClient,
-              private roteador: Router){}
+              private roteador: Router,
+              private pageService: PageDataService){}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.pageService.atualizarTitulo('Cadastro')
+  }
 
   validarTodosOsCampos(form: FormGroup){
     for(let controlName in form.controls){

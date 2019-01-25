@@ -66,4 +66,16 @@ export class CaixaDeEntradaComponent implements OnInit {
 
   }
 
+  handleRemoveEmail(emailId: string){
+    this.emailService
+        .deletar(emailId)
+        .subscribe(
+          () => {
+            this.listaDeEmails = this
+                                  .listaDeEmails
+                                  .filter(email => email.id != emailId)
+          }
+        );
+  }
+
 }

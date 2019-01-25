@@ -17,5 +17,6 @@ import { CadastroComponent } from './cadastro.component';
     SharedComponentsModule
   ],
   exports: [CadastroComponent]
+
 })
 export class CadastroModule {}
