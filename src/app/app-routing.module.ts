@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from '@angular/router';
 import { rotas } from "./app.routes";
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   imports: [
@@ -8,6 +9,9 @@ import { rotas } from "./app.routes";
   ],
   exports: [
     RouterModule
+  ],
+  providers: [
+    AuthGuard
   ]
 })
 export class AppRoutingModule { }
